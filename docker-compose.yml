@@ -17,6 +17,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: example
       MYSQL_DATABASE: redmine
+    volumes:
+      - db_data:/var/lib/mysql
 
   adminer:
     image: adminer
@@ -31,6 +33,8 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
       MONGO_INITDB_DATABASE: admin
+    volumes:
+      - mongodb_data:/data/db
 
   mongo-express:
     image: mongo-express
@@ -42,3 +46,7 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
       ME_CONFIG_MONGODB_SERVER: mongodb
+
+volumes:
+  db_data:
+  mongodb_data:
